@@ -4,6 +4,7 @@ import mongoose from 'mongoose';
 import cors from 'cors';
 import studentRoutes from './router/student.js';
 import mongoURI from './config/env.js';
+import amqp from 'amqplib';
 
 
 const app=express();
@@ -27,9 +28,8 @@ mongoose.connect(mongoURI,{useNewUrlParser:true,useUnifiedTopology:true})
        .then(()=> app.listen(port,() => 
            console.log(`connection is established and running on port ${port}`)
         )).catch((err)=> console.log(err.message));
-// mongoose.set(`useFindAndModify`,false);        
+//  mongoose.set(`useFindAndModify`,false);        
 
-import amqp from 'amqplib';
 
 
 const connectToRabbitMQ = async () => {
